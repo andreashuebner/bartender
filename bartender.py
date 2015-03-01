@@ -26,11 +26,12 @@ listNouns.append("Sidecar")
 listNouns.append("Rose")
 listNouns.append("Manhattan")
 
-'''Function that asks whether customer wants another drink.
-@param {string} nameOfCustomer
-@param {boolean} True if customer wants another drink, False if not
-'''
+
 def ask_for_other_drink(nameOfCustomer):
+    '''Function that asks whether customer wants another drink.
+    @param {string} nameOfCustomer
+    @param {boolean} True if customer wants another drink, False if not
+    '''
     answer=raw_input(nameOfCustomer + " , would you like another drink? (y/n)")
     answerLower=answer.lower()
     if answerLower.startswith("y"):
@@ -38,27 +39,30 @@ def ask_for_other_drink(nameOfCustomer):
     else:
         return False
     
-'''Asks and returns the name of customer
-@returns {String} The name of the customer
-'''
+
 def get_name_of_customer():
+    '''Asks and returns the name of customer
+    @returns {String} The name of the customer
+    '''
     nameOfCustomer=raw_input("Please tell me your name: ")
     return nameOfCustomer
-'''Function that chooses a random adjective and noun from the list of nouns/adjectives and returns a combined name of the drink
-@return {string} - The name of the drink
-'''
+
 def get_name():
+    '''Function that chooses a random adjective and noun from the list of nouns/adjectives and returns a combined name of the drink
+    @return {string} - The name of the drink
+    '''
     randomAdjective = random.choice(listAdjectives)
     randomNoun = random.choice(listNouns)
     nameOfDrink = randomAdjective + " " + randomNoun
     return nameOfDrink
 
 
-'''Asks how customer likes his/her drinks and returns a dict with attribute of ingredient
-as key and True/False as value
-@returns {dict} Dict with attributes like "strong, sweet" a key and boolean as value
-'''
+
 def ask_questions():
+    '''Asks how customer likes his/her drinks and returns a dict with attribute of ingredient
+    as key and True/False as value
+    @returns {dict} Dict with attributes like "strong, sweet" a key and boolean as value
+    '''
     dictAnswers={} #Will save either True or False for the questions asked
     for key in questions:
         answer=raw_input(questions[key] + " ")
@@ -69,11 +73,12 @@ def ask_questions():
             dictAnswers[key] = False
             
     return dictAnswers
-''' For every attribute in dictAnswers set to True, select a suitable ingredient at random
-@param {dict} dictAnswers - Having the attribute of ingredient as key and boolen as value
-@return {list] - Returns the list of randomly chosen suitable ingredients
-'''
+
 def mix_drinks(dictAnswers):
+    ''' For every attribute in dictAnswers set to True, select a suitable ingredient at random
+    @param {dict} dictAnswers - Having the attribute of ingredient as key and boolen as value
+    @return {list] - Returns the list of randomly chosen suitable ingredients
+    '''
     listIngredients=[]
     for key in dictAnswers:
         if dictAnswers[key] == True:
