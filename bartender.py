@@ -26,6 +26,24 @@ listNouns.append("Sidecar")
 listNouns.append("Rose")
 listNouns.append("Manhattan")
 
+'''Function that asks whether customer wants another drink.
+@param {string} nameOfCustomer
+@param {boolean} True if customer wants another drink, False if not
+'''
+def ask_for_other_drink(nameOfCustomer):
+    answer=raw_input(nameOfCustomer + " , would you like another drink? (y/n)")
+    answerLower=answer.lower()
+    if answerLower.startswith("y"):
+        return True
+    else:
+        return False
+    
+'''Asks and returns the name of customer
+@returns {String} The name of the customer
+'''
+def get_name_of_customer():
+    nameOfCustomer=raw_input("Please tell me your name: ")
+    return nameOfCustomer
 '''Function that chooses a random adjective and noun from the list of nouns/adjectives and returns a combined name of the drink
 @return {string} - The name of the drink
 '''
@@ -66,7 +84,11 @@ def mix_drinks(dictAnswers):
         
 
 if __name__ == "__main__":
-   dictAnswers=ask_questions()
-   mixedDrink=mix_drinks(dictAnswers)
-   nameOfDrink=get_name()
-   print ("Here is your drink " + nameOfDrink + " with the ingredients " + str(mixedDrink))
+   hasWishAnotherDrink = True
+   while hasWishAnotherDrink == True:
+       nameOfCustomer = get_name_of_customer()
+       dictAnswers=ask_questions()
+       mixedDrink=mix_drinks(dictAnswers)
+       nameOfDrink=get_name()
+       print (nameOfCustomer + ", here is your drink " + nameOfDrink + " with the ingredients " + str(mixedDrink))
+       hasWishAnotherDrink=ask_for_other_drink(nameOfCustomer)
